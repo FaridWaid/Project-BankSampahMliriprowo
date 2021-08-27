@@ -139,10 +139,9 @@ float: right;
 .footer-distributed{
   background-color: #262626;
   box-sizing: border-box;
-  width: 100%;
+  width: 101.8%;
   text-align: left;
   font: bold 16px sans-serif;
-
   padding: 50px 50px;
   margin-top: 0;
 }
