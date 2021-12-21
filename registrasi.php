@@ -51,7 +51,8 @@ require 'functions.php';
 
   <div class="isi-content mx-auto" style="width: 70%; margin-top: 5%; box-shadow: 0 3px 20px rgba(0,0,0,0.4); padding: 40px;">
       <h3 class="text-center">FORM REGISTRASI</h3><hr style="width:75%; height: 5px;" class="mx-auto bg-danger">
-      <form action="" method="post" class="mt-3">
+      <form action="" method="post" class="mt-3" enctype="multipart/form-data">
+      <input type="hidden" name="gambarlama" value="<?= $data["gambar"]; ?>">
 
         <div class="form-group mt-2">
           <label for="nama">Nama Lengkap</label>
@@ -61,7 +62,16 @@ require 'functions.php';
                 <i class="fas fa-file-signature mt-2"></i>
               </div>
             </div>
-            <input type="text" name="nama" id="nama" class="form-control mt-2" placeholder="Masukkan Nama Lengkap Anda">
+            <input type="text" name="nama" id="nama" required="required" class="form-control mt-2" placeholder="Masukkan Nama Lengkap Anda">
+          </div>
+        </div>
+
+        <div class="form-group mt-2">
+          <label for="nama">Foto</label>
+          <div class="input-group">
+            <div class="input-group-prepend mt-2">
+            </div>
+            <input type="file" name="gambar" required="required" id="gambar" class="form-control mt-2">
           </div>
         </div>
 
@@ -73,7 +83,7 @@ require 'functions.php';
                 <i class="fas fa-address-card mt-2"></i>
               </div>
             </div>
-            <input type="text" name="nik" id="nik" class="form-control mt-2" placeholder="Masukkan Nomor Induk Kewarganegaraan">
+            <input type="number" name="nik" id="nik" required="required" class="form-control mt-2" placeholder="Masukkan Nomor Induk Kewarganegaraan">
           </div>
         </div>
 
@@ -85,7 +95,7 @@ require 'functions.php';
                 <i class="fas fa-map-marker-alt mt-2"></i>
               </div>
             </div>
-            <input type="text" name="alamat" id="alamat" class="form-control mt-2" placeholder="Masukkan Alamat Anda (lengkap dengan RT/RW)">
+            <input type="text" name="alamat" id="alamat" required="required" class="form-control mt-2" placeholder="Masukkan Alamat Anda (lengkap dengan RT/RW)"> 
           </div>
         </div>
 
@@ -97,7 +107,7 @@ require 'functions.php';
                 <i class="fas fa-tty mt-2"></i>
               </div>
             </div>
-            <input type="text" name="telepon" id="telepon" class="form-control mt-2" placeholder="Masukkan Nomor Telepon Anda">
+            <input type="number" name="telepon" id="telepon" required="required" class="form-control mt-2" placeholder="Masukkan Nomor Telepon Anda">
           </div>
         </div>
 
@@ -109,7 +119,7 @@ require 'functions.php';
                 <i class="fas fa-user mt-2"></i>
               </div>
             </div>
-            <input type="text" name="username" id="username" class="form-control mt-2" placeholder="Masukkan Username Anda">
+            <input type="text" name="username" id="username" required="required" class="form-control mt-2" placeholder="Masukkan Username Anda">
           </div>
         </div>
 
@@ -121,7 +131,7 @@ require 'functions.php';
                 <i class="fas fa-lock mt-2"></i>
               </div>
             </div>
-            <input type="password" name="password" id="password" class="form-control mt-2" placeholder="Masukkan Password Anda">
+            <input type="password" name="password" id="password" required="required" class="form-control mt-2" placeholder="Masukkan Password Anda">
           </div>
         </div>
 
@@ -133,7 +143,7 @@ require 'functions.php';
                 <i class="fas fa-unlock-alt mt-2"></i>
               </div>
             </div>
-            <input type="password" name="password2" id="password2" class="form-control mt-2" placeholder="Konfirmasi Password Anda">
+            <input type="password" name="password2" id="password2" required="required" class="form-control mt-2" placeholder="Konfirmasi Password Anda">
           </div>
         </div>
 
@@ -152,8 +162,12 @@ require 'functions.php';
             <input type="hidden" name="saldo" id="saldo" class="form-control mt-2" placeholder="Konfirmasi Password Anda">
           </div>
         </div>
-
-        <button type="submit" name="register" class="btn-regist btn-primary mt-3 me-2 ms-1" style="width: 100%;">SUBMIT</button>
+        <div class="form-group mt-2">
+          <a href="login.php">
+            <button type="button" class="btn-login mt-3 me-2" style="width: 10%;"><i class="fas fa-arrow-left"></i></button>
+          </a>
+          <button type="submit" name="register" class="btn-regist btn-primary mt-3 me-2 ms-1" style="width: 80%;float:right;">SUBMIT</button>
+        </div>
       </form>
     </div>
 

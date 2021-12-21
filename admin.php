@@ -15,12 +15,24 @@ $biodata = query("SELECT * FROM admins WHERE IdAdmin = '$id'")[0];
 $no = mysqli_query($conn, "SELECT * FROM saldo_bank");
 $jumlahData = mysqli_num_rows($no);
 $hitung = $jumlahData - 1;
-$saldo = query("SELECT * FROM saldo_bank")[$hitung];
+
+if($hitung < 0){
+  $saldoAkhir = 0;
+} else {
+  $saldo = query("SELECT * FROM saldo_bank")[$hitung];
+  $saldoAkhir = ($saldo['totalSaldo']);
+}
+
 
 $stock = query("SELECT stock FROM stock_sampah");
 
 $users = mysqli_query($conn, "SELECT * FROM users");
 $jumlahDataUsers = mysqli_num_rows($users);
+$total = 0;
+foreach ($stock as $row){
+  $row['stock'];
+  $total += $row['stock'] ;
+};
 
 ?>
 
@@ -33,9 +45,13 @@ $jumlahDataUsers = mysqli_num_rows($users);
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="test/style.css">
+    <link rel='stylesheet' href='https://unicons.iconscout.com/release/v3.0.6/css/line.css'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" href="fontawesome/css/all.min.css">
     <link rel="stylesheet" href="css/manual/styledatauser.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/manual/style.css">
     <script src="js/manual/preloader.js" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -55,85 +71,117 @@ $jumlahDataUsers = mysqli_num_rows($users);
         </div>
     </div>
 
-    <div class="sidebar">
-			<ul>
-				<li>
-          <a href="admin.php" style="text-align: center; padding: 30px 0 30px 0; font-size: 20px;">Welcome, <br><?php echo $biodata["namaAdmin"]; ?> </a>
-				</li>
+    <!--wrapper start-->
+        <div class="wrapper">
+            <!--sidebar start-->
+            <div class="sidebar">
+                <div class="sidebar-menu">
+                    <center class="profile">
+                        <img src="img/logo/user.png" alt="">
+                        <p>Administrator</p>
+                    </center>
+                    <li class="item">
+                        <a href="admin.php" target="isi" class="menu-btn">
+                            <i class="fas fa-desktop"></i><span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="item" id="kategori">
+                        <a href="#kategori"class="menu-btn">
+                            <i class="glyphicon glyphicon-book"></i><span>Data<i class="fas fa-chevron-down drop-down"></i></span>
+                        </a>
+                        <div class="sub-menu">
+                            <a href="pengguna.php" target="isi"><i class=""></i><span>Data Pengguna</span></a>
+                        </div>
+                        <div class="sub-menu">
+                            <a href="sampahAdmin.php" target="isi"><i class=""></i><span>Data Sampah</span></a>
+                        </div>
+                        <div class="sub-menu">
+                            <a href="setoranAdmin.php" target="isi"><i class=""></i><span>Data Setoran</span></a>
+                        </div>
+                        <div class="sub-menu">
+                            <a href="penarikanAdmin.php" target="isi"><i class=""></i><span>Data Penarikan</span></a>
+                        </div>
+                        <div class="sub-menu">
+                            <a href="penjualanAdmin.php" target="isi"><i class=""></i><span>Data Penjualan</span></a>
+                        </div>
+                        <div class="sub-menu">
+                            <a href="beritaAdmin.php" target="isi"><i class=""></i><span>Data Berita</span></a>
+                        </div>
+                    </li>
+                    <li class="item" id="post">
+                        <a href="#post"class="menu-btn">
+                            <i class="fas fa-chart-bar"></i><span>Grafik<i class="fas fa-chevron-down drop-down"></i></span>
+                        </a>
+                        <div class="sub-menu">
+                            <a href="monitoringAdmin.php" target="isi"><i class=""></i><span>Grafik Monitoring</span></a>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <a href="logout.php" target="isi" class="menu-btn">
+                            <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+                        </a>
+                    </li>
+                </div>
+            </div>
+            <!--sidebar end-->
+        </div>
 
-				<li>
-					<a href="pengguna.php"><span class="fas fa-users" aria-hidden="true"></span>Data Pengguna</a>
-				</li>	
-				 	
-				<li>
-					<a href="sampahAdmin.php"><span class="fas fa-trash" aria-hidden="true"></span>Data Sampah</a>
-				</li>
-				
-				<li>
-					<a href="setoranAdmin.php"><span class="fas fa-trash-restore-alt" aria-hidden="true"></span>Data Setoran</a>
-				</li>
-
-        <li>
-					<a href="penarikanAdmin.php"><span class="fas fa-hand-holding-usd" aria-hidden="true"></span>Data Penarikan</a>
-				</li>
-
-        <li>
-					<a href="penjualanAdmin.php"><span class="fas fa-dollar-sign" aria-hidden="true"></span>Data Penjualan</a>
-				</li>
-
-        <li>
-					<a href="beritaAdmin.php"><span class="far fa-newspaper" aria-hidden="true"></span>Data Berita</a>
-				</li>
-
-				<li>
-					<a href="monitoringAdmin.php"><span class="fas fa-chart-bar" aria-hidden="true"></span>Grafik Monitoring</a>
-				</li>
-
-				<li>
-					<a href="logout.php"><span class="fas fa-sign-out-alt" aria-hidden="true"></span>Logout</a>
-				</li>
-                
-                <br><br><br><br><br>
-                <img src="img/logo/logo.png" style="width:75%" class="ms-4" alt="">
-                <p class="text-center text-warning">Bank Sampah Mliriprowo</p>
-
-			</ul>
-		</div>
     
-    <div class="box-1 text-center">
-        <h2 style="font-size: 30px; color: #262626;">Data Admin</h2>
+    <div class="box-1">
+        <h2 style="font-size: 30px; color: #262626;" class="text-center">Data Admin</h2>
         
         <div class="card">
           <div class="card-body">
         
             <section>
               <div class="form-group">
-                <label class="text-left">Nomor Induk Admin:</label>
-                <input type="text" style="cursor: not-allowed;" disabled="disabled" value="<?php echo $biodata["IdAdmin"]; ?>" />
+                <label class="">Nomor Induk Admin:</label>
+                <input type="text" style="cursor: not-allowed; width: 100%;" disabled="disabled" value="<?php echo $biodata["IdAdmin"]; ?>" />
               </div>
               <div class="form-group">
                 <label class="">Nama Admin:</label>
-                <input type="text" style="cursor: not-allowed;" disabled="disabled" value="<?php echo $biodata["namaAdmin"]; ?>"/>
+                <input type="text" style="cursor: not-allowed; width: 100%;" disabled="disabled" value="<?php echo $biodata["namaAdmin"]; ?>"/>
               </div>
               <div class="form-group">
                 <label class="">Username:</label>
-                <input type="text" style="cursor: not-allowed;" disabled="disabled" value="<?php echo $biodata["usernameAdmin"]; ?>"/>
-              </div>
-              <div class="form-group">
-                <label class="">Password:</label>
-                <input type="text" style="cursor: not-allowed;" disabled="disabled" value="<?php echo $biodata["passwordAdmin"]; ?>"/>
+                <input type="text" style="cursor: not-allowed; width: 100%;" disabled="disabled" value="<?php echo $biodata["usernameAdmin"]; ?>"/>
               </div>
               <div class="form-group">
                 <label class="">Level:</label>
-                <input type="text" style="cursor: not-allowed;" disabled="disabled" value="<?php echo $biodata["level"]; ?>"/>
+                <input type="text" style="cursor: not-allowed; width: 100%;" disabled="disabled" value="<?php echo $biodata["level"]; ?>"/>
               </div>
-              <a href="editAdmin.php?IdAdmin=<?php echo $biodata["IdAdmin"]; ?>"><input type="button" href="" value="Edit Data" /></a> 
+              <a href="editAdmin.php?IdAdmin=<?php echo $biodata["IdAdmin"]; ?>">
+              <button type="submit" name="submit" class="btn btn-primary btn-lg" style="width: 100%;">Edit Data</button></a> 
             </section>
           </div>
         </div>
         <br>
-
-        <div class="row text-white">
+    <section class="statis mt-4 text-center">
+      <div class="row">
+        <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+          <div class="box bg-warning p-3">
+            <i class="uil-eye"></i>
+            <h3><?php echo "Rp. ".number_format(($saldoAkhir), 2, ",", ".") ?></h3>
+            <p class="lead">Jumlah Saldo Bank</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+          <div class="box bg-danger p-3">
+            <i class="fas fa-cubes"></i>
+            <h3><?php echo $total." KG" ?></h3>
+            <p class="lead">Jumlah Stock Sampah</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="box bg-success p-3">
+            <i class="uil-user"></i>
+            <h3><?php echo $jumlahDataUsers; ?></h3>
+            <p class="lead">Jumlah User Yang Aktif</p>
+          </div>
+        </div>
+      </div>
+    </section>
+        <!-- <div class="row text-white">
                 <div class="card bg-info ms-3 me-4" style="width: 25rem;">
                     <div class="card-body">
                         <div class="card-body-icon">
@@ -145,13 +193,6 @@ $jumlahDataUsers = mysqli_num_rows($users);
                     </div>
                 </div>
 
-                <div class="card bg-success ms-5 me-4" style="width: 18rem;">
-                    <div class="card-body">
-                        <div class="card-body-icon">
-                          <i class="fas fa-cubes"></i>
-                        </div>
-                        <h5 class="card-title">JUMLAH STOCK SAMPAH</h5>
-                        <div class="display-4 fw-bold">
                           <?php $total = 0; ?>
                           <?php foreach ( $stock as $row)  : ?>
                             <?php $row['stock'] ?>
@@ -175,7 +216,7 @@ $jumlahDataUsers = mysqli_num_rows($users);
                         <a href="pengguna.php"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ms-2"></i></p></a>
                     </div>
                 </div>
-              </div>
+              </div> -->
 
 		</div>
 

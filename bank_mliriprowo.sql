@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 18, 2021 at 03:28 PM
+-- Generation Time: Dec 16, 2021 at 01:43 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -86,13 +86,7 @@ CREATE TABLE `penarikan` (
 --
 
 INSERT INTO `penarikan` (`idTarik`, `idUser`, `namaUser`, `tglTarik`, `jmlPenarikan`) VALUES
-('TRK001', 'USR001', 'Achmad Farid Alfa Waid', '2021-05-27', 5000),
-('TRK002', 'USR002', 'Ilma Dina Nur Rosidah', '2021-06-20', 15000),
-('TRK003', 'USR003', 'apakjr', '2021-06-21', 5000),
-('TRK004', 'USR004', 'Maudy Ayunda', '2021-06-22', 6000),
-('TRK005', 'USR002', 'Ilma Dina Nur Rosidah', '2021-06-24', 4100),
-('TRK006', 'USR005', 'Muhammad Zulfan Fahmi', '2021-06-24', 100),
-('TRK007', 'USR006', 'Arjuna Wirayudha', '2021-06-25', 1000);
+('TRK001', 'USR002', 'Ilma Dina Nur Rosidah', '2021-12-17', 10000);
 
 -- --------------------------------------------------------
 
@@ -116,12 +110,8 @@ CREATE TABLE `penjualan` (
 --
 
 INSERT INTO `penjualan` (`idJual`, `idSampah`, `berat`, `tglPenjualan`, `namaPembeli`, `nomorPembeli`, `harga`, `totalPendapatan`) VALUES
-('JUL001', 'SMP006', '2', '2021-05-26', 'Sarpan', '0895339390517', 2000, 4000),
-('JUL002', 'SMP002', '7', '2021-05-26', 'fredy', '000', 1000, 7000),
-('JUL003', 'SMP011', '5', '2021-06-12', 'Aimyon', '081355531234', 5000, 25000),
-('JUL004', 'SMP010', '5', '2021-06-12', 'Takahiro', '081355534321', 1500, 7500),
-('JUL005', 'SMP014', '7', '2021-06-12', 'Ryota', '081355534444', 4000, 28000),
-('JUL006', 'SMP011', '10', '2021-06-25', 'Sarpan', '081355534444', 2000, 20000);
+('JUL001', 'SMP009', '80', '2021-12-17', 'juna', '089533939000', 5000, 400000),
+('JUL002', 'SMP006', '5', '2021-12-17', 'zulpan', '0895339390111', 3000, 15000);
 
 -- --------------------------------------------------------
 
@@ -143,23 +133,9 @@ CREATE TABLE `saldo_bank` (
 --
 
 INSERT INTO `saldo_bank` (`idTransaksi`, `aksi`, `tanggal`, `aktor`, `jumlah`, `totalSaldo`) VALUES
-('SLD001', 'Penambahan', '2021-05-26', 'ADM001', 4000, 4000),
-('SLD002', 'Penambahan', '2021-05-26', 'ADM001', 7000, 11000),
-('SLD003', 'Pengurangan', '2021-05-27', 'USR001', 5000, 6000),
-('SLD004', 'Penambahan', '2021-06-12', 'ADM001', 25000, 31000),
-('SLD005', 'Penambahan', '2021-06-12', 'ADM001', 7500, 38500),
-('SLD006', 'Penambahan', '2021-06-12', 'ADM001', 28000, 66500),
-('SLD007', 'Pengurangan', '2021-06-20', 'USR002', 15000, 51500),
-('SLD008', 'Pengurangan', '2021-06-21', 'USR003', 5000, 46500),
-('SLD009', 'Pengurangan', '2021-06-22', 'USR004', 6000, 40500),
-('SLD010', 'Pengurangan', '2021-06-24', 'USR002', 4100, 36400),
-('SLD011', 'Pengurangan', '2021-06-24', 'USR005', 100, 36300),
-('SLD012', 'Penambahan', '2021-06-24', 'ADM001', 100, 36400),
-('SLD013', 'Pengurangan', '2021-06-24', 'USR005', 100, 36300),
-('SLD014', 'Penambahan', '2021-06-24', 'ADM001', 2000, 38300),
-('SLD015', 'Pengurangan', '2021-06-24', 'ADM001', 2000, 36300),
-('SLD016', 'Pengurangan', '2021-06-25', 'USR006', 1000, 35300),
-('SLD017', 'Penambahan', '2021-06-25', 'ADM001', 20000, 55300);
+('SLD001', 'Penambahan', '2021-12-17', 'ADM001', 400000, 400000),
+('SLD002', 'Penambahan', '2021-12-17', 'ADM001', 15000, 415000),
+('SLD003', 'Pengurangan', '2021-12-17', 'USR002', 10000, 405000);
 
 -- --------------------------------------------------------
 
@@ -221,24 +197,9 @@ CREATE TABLE `setoran` (
 --
 
 INSERT INTO `setoran` (`idSetor`, `idUser`, `idSampah`, `tglSetor`, `berat`, `total`) VALUES
-('STR001', 'USR001', 'SMP006', '2021-05-20', '4', 6000),
-('STR002', 'USR002', 'SMP002', '2021-05-25', '10', 6000),
-('STR003', 'USR004', 'SMP007', '2021-06-09', '1', 600),
-('STR004', 'USR004', 'SMP010', '2021-06-09', '2', 100),
-('STR005', 'USR003', 'SMP008', '2021-06-09', '3', 3300),
-('STR006', 'USR003', 'SMP009', '2021-06-09', '0.5', 50),
-('STR007', 'USR001', 'SMP003', '2021-06-09', '0.5', 300),
-('STR008', 'USR002', 'SMP011', '2021-06-09', '3', 3000),
-('STR009', 'USR004', 'SMP011', '2021-06-10', '10', 10000),
-('STR010', 'USR003', 'SMP012', '2021-06-10', '5', 7500),
-('STR011', 'USR002', 'SMP013', '2021-06-10', '8', 360000),
-('STR012', 'USR001', 'SMP014', '2021-06-10', '9', 63000),
-('STR013', 'USR001', 'SMP010', '2021-06-11', '2', 100),
-('STR014', 'USR002', 'SMP010', '2021-06-11', '2', 100),
-('STR015', 'USR003', 'SMP010', '2021-06-11', '2', 100),
-('STR016', 'USR004', 'SMP010', '2021-06-11', '2', 100),
-('STR017', 'USR005', 'SMP008', '2021-06-24', '2', 2200),
-('STR018', 'USR006', 'SMP011', '2021-06-25', '7', 7000);
+('STR001', 'USR001', 'SMP005', '2021-10-29', '10', 2000),
+('STR002', 'USR002', 'SMP006', '2021-10-30', '10', 15000),
+('STR003', 'USR004', 'SMP009', '2021-10-29', '100', 10000);
 
 -- --------------------------------------------------------
 
@@ -258,19 +219,19 @@ CREATE TABLE `stock_sampah` (
 
 INSERT INTO `stock_sampah` (`idStock`, `namaSampah`, `stock`) VALUES
 ('STK001', 'Kresek', 0),
-('STK002', 'Plastik', 3),
-('STK003', 'Karah warna', 1),
+('STK002', 'Plastik', 0),
+('STK003', 'Karah warna', 0),
 ('STK004', 'botol mineral plastik', 0),
-('STK005', 'Botol mineral kaca', 0),
-('STK006', 'Gelas mineral plastik', 2),
-('STK007', 'Kaleng', 1),
-('STK008', 'Kardus/Karton', 5),
-('STK009', 'Dedaunan', 1),
-('STK010', 'Sampah hasil masak', 5),
-('STK011', 'Besi', 5),
-('STK012', 'Baja', 5),
-('STK013', 'Tembaga', 8),
-('STK014', 'Aluminium', 2),
+('STK005', 'Botol mineral kaca', 10),
+('STK006', 'Gelas mineral plastik', 5),
+('STK007', 'Kaleng', 0),
+('STK008', 'Kardus/Karton', 0),
+('STK009', 'Dedaunan', 20),
+('STK010', 'Sampah hasil masak', 0),
+('STK011', 'Besi', 0),
+('STK012', 'Baja', 0),
+('STK013', 'Tembaga', 0),
+('STK014', 'Aluminium', 0),
 ('STK015', 'Zeng', 0),
 ('STK016', 'Kain', 0),
 ('STK017', 'Sandal dan Sepatu', 0),
@@ -286,6 +247,7 @@ INSERT INTO `stock_sampah` (`idStock`, `namaSampah`, `stock`) VALUES
 CREATE TABLE `users` (
   `idUser` varchar(6) NOT NULL,
   `namaUser` varchar(30) NOT NULL,
+  `gambar` varchar(255) NOT NULL,
   `nik` varchar(20) NOT NULL,
   `alamat` varchar(100) NOT NULL,
   `telepon` varchar(13) NOT NULL,
@@ -300,13 +262,13 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`idUser`, `namaUser`, `nik`, `alamat`, `telepon`, `username`, `passwordUser`, `jmlSetoran`, `jmlPenarikan`, `saldo`) VALUES
-('USR001', 'Achmad Farid Alfa Waid', '3515012608010001', 'Sidoarjo, Jawa Timur , Indonesia', '0895339390517', 'farid', '12345678', 4, 1, 64400),
-('USR002', 'Ilma Dina Nur Rosidah', '111222333444', 'Pilang', '08536955889', 'dina', '12345', 4, 2, 350000),
-('USR003', 'apakjr', '000000001', 'lengkong, mojokerto', '089533', 'apak', 'apak', 4, 1, 5950),
-('USR004', 'Maudy Ayunda', '3515012608010002', 'Pilang, Mliriprowo', '085788988012', 'maudy', 'maudy', 4, 1, 4800),
-('USR005', 'Muhammad Zulfan Fahmi oke', '3515012608010005', 'Dsn. Mlaten, Ds. Mliriprowo, RT.04/RW.03, Kec. Tarik, Kab. Sidoarjo', '085365955055', 'zulfan', 'zulfan', 1, 1, 2100),
-('USR006', 'Arjuna Wirayudha', '3515012608010007', 'Dsn. Mlaten, Ds. Mliriprowo, RT.04/RW.03, Kec. Tarik, Kab. Sidoarjo', '0895339390518', 'arjuna', 'arjuna', 1, 1, 6000);
+INSERT INTO `users` (`idUser`, `namaUser`, `gambar`, `nik`, `alamat`, `telepon`, `username`, `passwordUser`, `jmlSetoran`, `jmlPenarikan`, `saldo`) VALUES
+('USR001', 'Achmad Farid Alfa Waid', '', '3515012608010001', 'Sidoarjo, Jawa Timur , Indonesia', '0895339390517', 'farid', '12345678', 1, 0, 2000),
+('USR002', 'Ilma Dina Nur Rosidah', '', '111222333444', 'Pilang', '08536955889', 'dina', '12345', 1, 1, 5000),
+('USR003', 'apakjr', '', '000000001', 'lengkong, mojokerto', '089533', 'apak', 'apak', 0, 0, 0),
+('USR004', 'Maudy Ayunda', '', '3515012608010002', 'Pilang, Mliriprowo', '085788988012', 'maudy', 'maudy', 1, 0, 10000),
+('USR005', 'Muhammad Zulfan Fahmi oke', '617decc191389.jpg', '3515012608010005', 'Dsn. Mlaten, Ds. Mliriprowo, RT.04/RW.03, Kec. Tarik, Kab. Sidoarjo', '085365955055', 'zulfan', 'zulfan', 0, 0, 0),
+('USR006', 'Achmad Farid Alfa Waid', '61bb3345b4dec.png', '351501260801098', 'Dsn. Pilang, Ds. Mliriprowo, Kec. Tarik', '0895339390897', 'faridwaid', 'faridwaid', 0, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -335,6 +297,7 @@ ALTER TABLE `penarikan`
 -- Indexes for table `penjualan`
 --
 ALTER TABLE `penjualan`
+  ADD PRIMARY KEY (`idJual`),
   ADD KEY `idSampah` (`idSampah`);
 
 --
